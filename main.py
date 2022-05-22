@@ -24,4 +24,4 @@ def home(Date):
 
 if __name__ == "__main__":
  app.secret_key = "170194"
- app.run(debug=True)
+ app.run(debug=False, host='0.0.0.0')
