@@ -46,6 +46,8 @@ all = list()
 symbol = list()
 long = list()
 short = list()
+dLong = list()
+dShort = list()
 
 soup = BeautifulSoup(content,'html.parser')
 
@@ -58,9 +60,11 @@ all = all[7:len(all)]
 symbol = all[0:len(all):7]
 long = all[2:len(all):7]
 short = all[3:len(all):7]
+dLong = all[4:len(all):7]
+dShort = all[5:len(all):7]
 
 def getdata():
- table = {'SYMBOLS':symbol, 'LONGS':long, 'SHORTS':short}
+ table = {'SYMBOLS':symbol, 'LONGS':long, 'SHORTS':short, 'CHANGE IN LONGS':dLong, 'CHANGE IN SHORTS':dShort}
  data = pd.DataFrame(table)
  return table
 
@@ -74,7 +78,7 @@ for sym in symbol:
 filename = 'sentiment.csv'
 location = os.path.join(path,filename)
 
-with open(location, 'w') as f:
+with open(filename, 'w') as f:
     for i in range(len(symbol)):
         f.write(symbol[i]+","+long[i]+","+short[i]+"\n")
 
